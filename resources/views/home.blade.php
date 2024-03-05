@@ -375,7 +375,7 @@
             height: 40px;
         }
     </style>
-    <a class="button-whatsapp {{ $whatsapp->link ? '' : 'd-none' }}" href="{{ $whatsapp->link }}"><img src="{{ asset('assets/img/whatsapp-icon-logo-png.png') }}" alt=""></a>
+    <a class="button-whatsapp {{ $whatsapp->link ? '' : 'd-none' }}" href="{{ $whatsapp->link }}"><img src="{{ asset('assets/img_default/whatsapp-icon-logo-png.png') }}" alt=""></a>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
