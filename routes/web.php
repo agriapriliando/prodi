@@ -12,6 +12,9 @@ Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout']);
 
+Route::get('/s1mg', function () {
+    return redirect('https://mybusiness-website.my.canva.site/panduanpmg');
+});
 Route::get('/', [FrontController::class, 'index']);
 Route::get('{slug}', [FrontController::class, 'home']);
 
