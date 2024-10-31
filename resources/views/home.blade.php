@@ -234,19 +234,21 @@
                 <div class="row">
                     <div class="row">
                         @foreach ($artikels as $ar)
-                            <div class="col-lg-4 col-md-4 col-12 p-3">
-                                <a href="https://iaknpky.ac.id/{{ $ar->slug }}">
-                                    <img style="max-width: 250; max-height: 250px; object-fit: cover; border-radius: 8px;" class="card-img-top"
-                                        src="{{ url('https://iaknpky.ac.id/asset/img/berita/thumbnails/' . $ar->img) }}" alt="...">
-                                    <div class="mt-3">
-                                        <h5>{{ strlen($ar->judul) < 90 ? $ar->judul : substr($ar->judul, 0, 100) . '....' }} </h5>
-                                        <p class="fst-italic p-0 m-0">
-                                            <span class="mx-1" style="font-size: 2.5vh"><i class="fas fa-user-tie me-1"></i>By {{ $ar->user->name }}</span>
-                                            <span class="mx-1" style="font-size: 2.5vh"><i class="far fa-calendar-alt me-1"></i>{{ date('d F, Y', strtotime($ar->created_at)) }}</span>
-                                            <span class="mx-1" style="font-size: 2.5vh"><i class="far fa-clock me-1"></i>{{ date('H:i:s', strtotime($ar->created_at)) }} WIB</span>
-                                        </p>
-                                    </div>
-                                </a>
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="bg-white m-1 p-3 rounded">
+                                    <a href="https://iaknpky.ac.id/{{ $ar->slug }}">
+                                        <img style="width: 250; height: 250px; object-fit: cover; border-radius: 8px;" class="card-img-top"
+                                            src="{{ url('https://iaknpky.ac.id/asset/img/berita/thumbnails/' . $ar->img) }}" alt="...">
+                                        <div class="mt-3">
+                                            <h5 class="text-dark">{{ strlen($ar->judul) < 90 ? $ar->judul : substr($ar->judul, 0, 100) . '....' }} </h5>
+                                            <p class="fst-italic p-0 m-0 text-dark">
+                                                <span class="mx-1" style="font-size: 2.5vh"><i class="bi bi-calendar me-1"></i> {{ date('d F, Y', strtotime($ar->created_at)) }}</span>
+                                                <br><span class="mx-1" style="font-size: 2.5vh"><i class="bi bi-clock me-1"></i> {{ date('H:i', strtotime($ar->created_at)) }} WIB</span>
+                                                <br><span class="mx-1" style="font-size: 2.5vh"><i class="bi bi-person me-1"></i> oleh {{ $ar->user->name }}</span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         @endforeach
                     </div>

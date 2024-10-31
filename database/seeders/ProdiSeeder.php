@@ -22,7 +22,6 @@ class ProdiSeeder extends Seeder
                 'nama_prodi' => 'Manajemen Pendidikan Kristen',
                 'jenjang' => 'S1',
                 'upps' => 'Fakultas Keguruan dan Ilmu Pendidikan Kristen',
-                // 'slug' => Str::of('Manajemen Pendidikan Kristen')->slug('-'),
                 'slug' => 's1mpk',
             ]
         ]);

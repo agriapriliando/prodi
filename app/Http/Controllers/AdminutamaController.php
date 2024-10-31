@@ -19,7 +19,9 @@ class AdminutamaController extends Controller
         $daftarweb = User::find(session('iduser'))->prodis()->orderBy('id')->get();
 
         // slug link home
+        // return count($daftarweb);
         $slughome = $daftarweb[0]->slug;
+        // return "AA";
         return view('admin.adminutama', compact('users', 'allprodi', 'daftarweb', 'slughome'));
     }
 
