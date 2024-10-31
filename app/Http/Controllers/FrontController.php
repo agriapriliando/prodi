@@ -24,9 +24,9 @@ class FrontController extends Controller
         if (!$prodi) {
             return redirect('');
         }
-        $artikel = json_decode(Http::get("https://iaknpky.ac.id/api/artikel"));
+        $artikels = Http::get("https://iaknpky.ac.id/api/artikel");
         return view('home', [
-            'artikel' => $artikel,
+            'artikels' => json_decode($artikels),
             'slug_prodi' => $slug,
             'header' => Part::where('prodi_id', $prodi->id)->where('kode', 'header')->first(),
             'seo_title' => Part::where('prodi_id', $prodi->id)->where('kode', 'seo_title')->first(),

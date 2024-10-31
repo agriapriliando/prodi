@@ -233,7 +233,7 @@
                 </div>
                 <div class="row">
                     <div class="row">
-                        @foreach ($artikel as $ar)
+                        @foreach ($artikels as $ar)
                             <div class="col-lg-4 col-md-4 col-12 p-3">
                                 <a href="https://iaknpky.ac.id/{{ $ar->slug }}">
                                     <img style="max-width: 250; max-height: 250px; object-fit: cover; border-radius: 8px;" class="card-img-top"
