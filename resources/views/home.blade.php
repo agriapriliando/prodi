@@ -89,14 +89,14 @@
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center justify-content-between">
             <div style="max-width: 300px">
-                <h1 class="logo" style="font-size: 14px"><a href="{{ url('') }}">{{ $header->teks }}</a></h1>
+                <h1 class="logo" style="font-size: 14px"><a href="{{ url($prodi_slug) }}">{{ $header->teks }}</a></h1>
             </div>
             <!-- Uncomment below if you prefer to use an image logo -->
             {{-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> --}}
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="{{ url($prodi_slug) }}">Home</a></li>
                     <li class="dropdown"><a href="#"><span>Tentang</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="#pal4">{{ $pal4->teks }}</a></li>
@@ -154,11 +154,11 @@
                         </ul>
                         <div class="mb-3">
                             <h4>VISI</h4>
-                            <p>{{ $visi->teks }}</p>
+                            <p>{!! $visi->teks !!}</p>
                         </div>
                         <div class="mb-5">
                             <h4>MISI</h4>
-                            <p>{{ $misi->teks }}</p>
+                            <p>{!! $misi->teks !!}</p>
                         </div>
                         <a href="{{ $pal3->link }}" class="read-more">{{ $pal3->teks }} <i class="bi bi-long-arrow-right"></i></a>
                     </div>

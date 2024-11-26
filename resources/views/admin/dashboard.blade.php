@@ -7,14 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $header->teks}}</title>
+    <title>{{ $header->teks }}</title>
 
     <!-- Favicons -->
     <link href="{{ asset('assets') }}/img_default/favicon.png" rel="icon">
     <link href="{{ asset('assets') }}/img_default/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets') }}/vendor/aos/aos.css" rel="stylesheet">
@@ -47,10 +49,10 @@
     #hero {
         width: 100%;
         height: 100vh;
-        background: url("{{ asset('assets/'.$fotobg->link) }}") center center no-repeat;
+        background: url("{{ asset('assets/' . $fotobg->link) }}") center center no-repeat;
         background-size: cover;
     }
-    
+
     .fixed-top {
         background-color: rgba(20, 7, 198, 0.543);
     }
@@ -61,7 +63,7 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
             <div style="max-width: 300px">
-                <h1 class="logo" style="font-size: 17px"><a href="{{ url('') }}">{{ $header->teks }}</a></h1>
+                <h1 class="logo" style="font-size: 17px"><a href="{{ url('admin/' . $slug) }}">{{ $header->teks }}</a></h1>
             </div>
             {{-- <h1 class="logo"><a href="{{ url('admin/'.$slug) }}">{{ $header->teks }}</a></h1> --}}
             <!-- Uncomment below if you prefer to use an image logo -->
@@ -69,44 +71,44 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="{{ url('admin/'.$slug) }}">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="{{ url('admin/' . $slug) }}">Home</a></li>
                     <li class="dropdown"><a href="#"><span>Teks</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="{{ url('part/'.$slug.'/'.$header->kode) }}">{{ strtoupper($header->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $header->kode) }}">{{ strtoupper($header->kode) }}</a></li>
                             <li class="dropdown"><a href="#"><span>Part A</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     @foreach ($pal as $item)
-                                    <li><a href="{{ url('part/'.$slug.'/'.$item->kode) }}">{{ strtoupper($item->kode) }}</a></li>
+                                        <li><a href="{{ url('part/' . $slug . '/' . $item->kode) }}">{{ strtoupper($item->kode) }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$visi->kode) }}">{{ strtoupper($visi->kode) }}</a></li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$misi->kode) }}">{{ strtoupper($misi->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $visi->kode) }}">{{ strtoupper($visi->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $misi->kode) }}">{{ strtoupper($misi->kode) }}</a></li>
                             <li class="dropdown"><a href="#"><span>Footer</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     @foreach ($footer as $item)
-                                    <li><a href="{{ url('part/'.$slug.'/'.$item->kode) }}">{{ strtoupper($item->kode) }}</a></li>
+                                        <li><a href="{{ url('part/' . $slug . '/' . $item->kode) }}">{{ strtoupper($item->kode) }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#"><span>Foto</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     @foreach ($foto as $item)
-                                    <li><a href="{{ url('part/'.$slug.'/'.$item->kode) }}">{{ strtoupper($item->kode) }}</a></li>
+                                        <li><a href="{{ url('part/' . $slug . '/' . $item->kode) }}">{{ strtoupper($item->kode) }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#"><span>Count</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     @foreach ($count as $item)
-                                    <li><a href="{{ url('part/'.$slug.'/'.$item->kode) }}">{{ strtoupper($item->kode) }}</a></li>
+                                        <li><a href="{{ url('part/' . $slug . '/' . $item->kode) }}">{{ strtoupper($item->kode) }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#"><span>SEO</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     @foreach ($seo as $item)
-                                    <li><a href="{{ url('part/'.$slug.'/'.$item->kode) }}">{{ strtoupper($item->kode) }}</a></li>
+                                        <li><a href="{{ url('part/' . $slug . '/' . $item->kode) }}">{{ strtoupper($item->kode) }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
@@ -114,21 +116,21 @@
                     </li>
                     <li class="dropdown"><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="{{ url('part/'.$slug.'/'.$facebook->kode) }}">{{ strtoupper($facebook->kode) }}</a></li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$whatsapp->kode) }}">{{ strtoupper($whatsapp->kode) }}</a></li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$instagram->kode) }}">{{ strtoupper($instagram->kode) }}</a></li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$instagramembed->kode) }}">{{ strtoupper($instagramembed->kode) }}</a></li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$alamat->kode) }}">{{ strtoupper($alamat->kode) }}</a></li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$nohp->kode) }}">{{ strtoupper($nohp->kode) }}</a></li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$email->kode) }}">{{ strtoupper($email->kode) }}</a></li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$gmap->kode) }}">{{ strtoupper($gmap->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $facebook->kode) }}">{{ strtoupper($facebook->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $whatsapp->kode) }}">{{ strtoupper($whatsapp->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $instagram->kode) }}">{{ strtoupper($instagram->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $instagramembed->kode) }}">{{ strtoupper($instagramembed->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $alamat->kode) }}">{{ strtoupper($alamat->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $nohp->kode) }}">{{ strtoupper($nohp->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $email->kode) }}">{{ strtoupper($email->kode) }}</a></li>
+                            <li><a href="{{ url('part/' . $slug . '/' . $gmap->kode) }}">{{ strtoupper($gmap->kode) }}</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="{{ url('admin/'.$slug.'#link') }}">LINK</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url('admin/' . $slug . '#link') }}">LINK</a></li>
                     <li class="dropdown"><a href="#"><span>Pilih Prodi/UPPS</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             @foreach ($user as $prodi)
-                            <li><a href="{{ url('admin/'.$prodi->slug) }}">{{ $prodi->jenjang.'-'.strtoupper($prodi->nama_prodi) }}</a></li>
+                                <li><a href="{{ url('admin/' . $prodi->slug) }}">{{ $prodi->jenjang . '-' . strtoupper($prodi->nama_prodi) }}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -146,25 +148,26 @@
 
         <div class="container-fluid">
             @if (session('status'))
-            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-                <h5><strong>Berhasil</strong> {{ session('status') }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                    <h5><strong>Berhasil</strong> {{ session('status') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             @endif
-            <div class="row justify-content-center">
+            <div class="row justify-content-center py-3" style="background-color : rgba(0, 50, 107, 0.39)">
                 <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <a href="{{ url('part/'.$slug.'/'.$pal1->kode) }}" class="text-white link-admin">({{ strtoupper($pal1->kode) }})</a>
-                    @if (preg_match("/<[^<]+>/",$pal1->teks,$m) != 0)
+                    <a href="{{ url('part/' . $slug . '/' . $pal1->kode) }}" class="text-white link-admin">({{ strtoupper($pal1->kode) }})</a>
+                    @if (preg_match('/<[^<]+>/', $pal1->teks, $m) != 0)
                         <p>{!! $pal1->teks !!}</p>
-                        @else
+                    @else
                         <h1>{!! $pal1->teks !!}</h1>
-                        @endif
-                        <a href="{{ url('part/'.$slug.'/'.$pal2->kode) }}" class="text-white">({{ strtoupper($pal2->kode) }})</a>
-                        <h2>{{ $pal2->teks }}</h2>
-                        <div><a href="{{ url('part/'.$slug.'/'.$pal3->kode) }}" class="text-white">({{ strtoupper($pal3->kode) }})</a> <a href="{{ $pal3->link }}" class="btn-get-started scrollto">{{ $pal3->teks }}</a></div>
+                    @endif
+                    <a href="{{ url('part/' . $slug . '/' . $pal2->kode) }}" class="text-white">({{ strtoupper($pal2->kode) }})</a>
+                    <h2>{{ $pal2->teks }}</h2>
+                    <div><a href="{{ url('part/' . $slug . '/' . $pal3->kode) }}" class="text-white">({{ strtoupper($pal3->kode) }})</a> <a href="{{ $pal3->link }}"
+                            class="btn-get-started scrollto">{{ $pal3->teks }}</a></div>
                 </div>
                 <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img">
-                    <img src="{{ asset('assets/'.$foto1->link) }}" class="img-fluid animated" alt="">
+                    <img src="{{ asset('assets/' . $foto1->link) }}" class="img-fluid animated" alt="">
                     <div class="row">
                         <span class="btn btn-warning p-2">Selamat Datang Administrator - Anda Login Sebagai {{ session('namauser') }}
                             <a href="{{ url('logout') }}" style="text-decoration: underline"><i class="bi bi-box-arrow-in-right"></i> Klik untuk Logout</a>
@@ -190,36 +193,37 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2">
-                        <img src="{{ asset('assets/'.$foto2->link) }}" class="img-fluid" alt="">
+                        <img src="{{ asset('assets/' . $foto2->link) }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                        <h3><a href="{{ url('part/'.$slug.'/'.$pal4->kode) }}">({{ strtoupper($pal4->kode) }})</a> {{ $pal4->teks }}</h3>
+                        <h3><a href="{{ url('part/' . $slug . '/' . $pal4->kode) }}">({{ strtoupper($pal4->kode) }})</a> {!! $pal4->teks !!}</h3>
                         <p class="fst-italic">
-                            <a href="{{ url('part/'.$slug.'/'.$pal5->kode) }}">({{ strtoupper($pal5->kode) }})</a>
-                            {{ $pal5->teks}}
+                            <a href="{{ url('part/' . $slug . '/' . $pal5->kode) }}">({{ strtoupper($pal5->kode) }})</a>
+                            {!! $pal5->teks !!}
                         </p>
                         <ul>
-                            <li><a href="{{ url('part/'.$slug.'/'.$pal6->kode) }}">({{ strtoupper($pal6->kode) }})</a>
-                                <i class="bi bi-check-circle"></i> {{ $pal6->teks}}
+                            <li><a href="{{ url('part/' . $slug . '/' . $pal6->kode) }}">({{ strtoupper($pal6->kode) }})</a>
+                                <i class="bi bi-check-circle"></i> {!! $pal6->teks !!}
                             </li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$pal7->kode) }}">({{ strtoupper($pal7->kode) }})</a>
-                                <i class="bi bi-check-circle"></i> {{ $pal7->teks}}
+                            <li><a href="{{ url('part/' . $slug . '/' . $pal7->kode) }}">({{ strtoupper($pal7->kode) }})</a>
+                                <i class="bi bi-check-circle"></i> {!! $pal7->teks !!}
                             </li>
-                            <li><a href="{{ url('part/'.$slug.'/'.$pal8->kode) }}">({{ strtoupper($pal8->kode) }})</a>
-                                <i class="bi bi-check-circle"></i> {{ $pal8->teks}}
+                            <li><a href="{{ url('part/' . $slug . '/' . $pal8->kode) }}">({{ strtoupper($pal8->kode) }})</a>
+                                <i class="bi bi-check-circle"></i> {!! $pal8->teks !!}
                             </li>
                         </ul>
                         <div class="mb-3">
                             <h4>VISI</h4>
-                            <p><a href="{{ url('part/'.$slug.'/'.$visi->kode) }}">({{ strtoupper($visi->kode) }})</a>
-                                {{ $visi->teks }}</p>
+                            <p><a href="{{ url('part/' . $slug . '/' . $visi->kode) }}">({{ strtoupper($visi->kode) }})</a>
+                                {!! $visi->teks !!}</p>
                         </div>
                         <div class="mb-5">
                             <h4>MISI</h4>
-                            <p><a href="{{ url('part/'.$slug.'/'.$misi->kode) }}">({{ strtoupper($misi->kode) }})</a>
-                                {{ $misi->teks }}</p>
+                            <p><a href="{{ url('part/' . $slug . '/' . $misi->kode) }}">({{ strtoupper($misi->kode) }})</a>
+                                {!! $misi->teks !!}</p>
                         </div>
-                        <a href="{{ $pal3->link }}" class="read-more">{{ $pal3->teks }} <i class="bi bi-long-arrow-right"></i></a>
+                        <a class="me-2" href="{{ url('part/' . $slug . '/' . $pal3->kode) }}">({{ strtoupper($pal3->kode) }})</a><a href="{{ $pal3->link }}"
+                            class="read-more">{{ $pal3->teks }} <i class="bi bi-long-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -234,12 +238,12 @@
                 <div class="row counters">
 
                     <div class="col-lg-6 col-6 text-center">
-                        <span data-purecounter-start="0" data-purecounter-end="{{ (int)$count1->link }}" data-purecounter-duration="1" class="purecounter"></span>
-                        <p><a href="{{ url('part/'.$slug.'/'.$count1->kode) }}" class="text-white">({{ strtoupper($count1->kode) }})</a> {{ $count1->teks }}</p>
+                        <span data-purecounter-start="0" data-purecounter-end="{{ (int) $count1->link }}" data-purecounter-duration="1" class="purecounter"></span>
+                        <p><a href="{{ url('part/' . $slug . '/' . $count1->kode) }}" class="text-white">({{ strtoupper($count1->kode) }})</a> {{ $count1->teks }}</p>
                     </div>
                     <div class="col-lg-6 col-6 text-center">
-                        <span data-purecounter-start="0" data-purecounter-end="{{ (int)$count2->link }}" data-purecounter-duration="1" class="purecounter"></span>
-                        <p><a href="{{ url('part/'.$slug.'/'.$count2->kode) }}" class="text-white">({{ strtoupper($count2->kode) }})</a> {{ $count2->teks }}</p>
+                        <span data-purecounter-start="0" data-purecounter-end="{{ (int) $count2->link }}" data-purecounter-duration="1" class="purecounter"></span>
+                        <p><a href="{{ url('part/' . $slug . '/' . $count2->kode) }}" class="text-white">({{ strtoupper($count2->kode) }})</a> {{ $count2->teks }}</p>
                     </div>
 
                 </div>
@@ -258,21 +262,23 @@
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
                 <div id="datalink" class="row justify-content-center">
                     @foreach ($dokumen as $item)
-                    <div class="col-12 px-2 py-1" id="{{ $item->id}}">
-                        <div class="d-flex">
-                            <span class="btn btn-success me-1">{{ $loop->iteration }}</span>
-                            <a href="{{ $item->link }}" class="btn btn-primary me-2">{{ $item->teks }}</a>
-                            <a href="{{ url('part/'.$slug.'/'.$item->kode) }}" class="btn btn-warning me-2"><i class="bi bi-pencil"></i></a>
-                            @if ($loop->iteration > 1)
-                            <button data-hapus="{{ $item->id}}" data-url="{{ url('delete/'.$slug.'/'.$item->kode) }}" data-id="{{ $item->teks }}" type="button" class="btn btn-danger removelink"><i class="bi bi-trash"></i> </button>
-                            @endif
+                        <div class="col-12 px-2 py-1" id="{{ $item->id }}">
+                            <div class="d-flex">
+                                <span class="btn btn-success me-1">{{ $loop->iteration }}</span>
+                                <a href="{{ $item->link }}" class="btn btn-primary me-2">{{ $item->teks }}</a>
+                                <a href="{{ url('part/' . $slug . '/' . $item->kode) }}" class="btn btn-warning me-2"><i class="bi bi-pencil"></i></a>
+                                @if ($loop->iteration > 1)
+                                    <button data-hapus="{{ $item->id }}" data-url="{{ url('delete/' . $slug . '/' . $item->kode) }}" data-id="{{ $item->teks }}" type="button"
+                                        class="btn btn-danger removelink"><i class="bi bi-trash"></i> </button>
+                                @endif
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
                 <div class="mt-3">
                     <p class="d-inline-flex gap-1">
-                        <button class="btn btn-warning rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <button class="btn btn-warning rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
+                            aria-controls="collapseExample">
                             <i class="bi bi-plus"> Link / URL</i>
                         </button>
                     </p>
@@ -312,55 +318,55 @@
                             dataurl = $(this).attr("data-url");
                             console.log(teks);
                             swal({
-                                title: 'Yakin ingin menghapus link '+teks+' ?',
+                                title: 'Yakin ingin menghapus link ' + teks + ' ?',
                                 icon: 'warning',
-                                buttons:{
+                                buttons: {
                                     confirm: {
-                                        text : 'Ya, Hapus Permanen',
-                                        className : 'btn btn-success'
+                                        text: 'Ya, Hapus Permanen',
+                                        className: 'btn btn-success'
                                     },
                                     cancel: {
                                         visible: true,
                                         className: 'btn btn-danger'
                                     }
                                 }
-                                }).then((deleteAll) => {
-                                    if (deleteAll) {
-                                        $.ajax({
-                                            url: ""+dataurl+"",
-                                            type: 'DELETE',
-                                            headers: {
-                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                            },
-                                            success: function(data) {
-                                                swal({
-                                                    title: 'Proses Hapus Berhasil',
-                                                    text: data.message,
-                                                    type: 'success',
-                                                    buttons : {
-                                                        confirm: {
-                                                            className : 'btn btn-success'
-                                                        }
+                            }).then((deleteAll) => {
+                                if (deleteAll) {
+                                    $.ajax({
+                                        url: "" + dataurl + "",
+                                        type: 'DELETE',
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success: function(data) {
+                                            swal({
+                                                title: 'Proses Hapus Berhasil',
+                                                text: data.message,
+                                                type: 'success',
+                                                buttons: {
+                                                    confirm: {
+                                                        className: 'btn btn-success'
                                                     }
-                                                });
-                                                if (data['status'] == true) {
-                                                    $("#"+datahapus).remove();
-                                                    // $(".removelink").each(function() {
-                                                    //     $(this).parents(".removehtml").remove();
-                                                    // });
-                                                    // alert(data['message']);
-                                                } else {
-                                                    alert('Error occured.');
                                                 }
-                                            },
-                                            error: function(data) {
-                                                alert(data.responseText);
+                                            });
+                                            if (data['status'] == true) {
+                                                $("#" + datahapus).remove();
+                                                // $(".removelink").each(function() {
+                                                //     $(this).parents(".removehtml").remove();
+                                                // });
+                                                // alert(data['message']);
+                                            } else {
+                                                alert('Error occured.');
                                             }
-                                        });
-                                    } else {
-                                        swal.close();
-                                    }
-                                });
+                                        },
+                                        error: function(data) {
+                                            alert(data.responseText);
+                                        }
+                                    });
+                                } else {
+                                    swal.close();
+                                }
+                            });
                         });
 
 
@@ -369,8 +375,7 @@
                             teks = $('input[name="teks"]').val();
                             link = $('input[name="link"]').val();
                             slug = $('input[name="slug"]').val();
-                            if(teks == '' || link == '')
-                            {
+                            if (teks == '' || link == '') {
                                 swal({
                                     title: 'ERROR',
                                     text: 'Kolom tidak boleh kosong!!!',
@@ -381,75 +386,75 @@
                                 return;
                             }
                             var formData = {
-                                '_token' : "{{ csrf_token() }}",
-                                '_method' : "POST",
-                                'teks' : teks,
-                                'slug' : slug,
-                                'link' : link
+                                '_token': "{{ csrf_token() }}",
+                                '_method': "POST",
+                                'teks': teks,
+                                'slug': slug,
+                                'link': link
                             };
                             console.log($('#formtambahlink').serialize());
                             swal({
                                 title: 'Tambah Link ?',
                                 icon: 'info',
-                                buttons:{
+                                buttons: {
                                     confirm: {
-                                        text : 'Ya, Tambah',
-                                        className : 'btn btn-success'
+                                        text: 'Ya, Tambah',
+                                        className: 'btn btn-success'
                                     },
                                     cancel: {
                                         visible: true,
                                         className: 'btn btn-danger'
                                     }
                                 }
-                                }).then((tambahlink) => {
-                                    if (tambahlink) {
-                                        $.ajax({
-                                            url: "{{ url('/store') }}",
-                                            type: 'POST',
-                                            data: formData,
-                                            dataType : 'json',
-                                            success: function(data) {
-                                                swal({
-                                                    title: 'Proses Tambah Berhasil',
-                                                    text: data.message,
-                                                    icon: 'success',
-                                                    showConfirmButton: false,
-                                                });
-                                                if (data['status'] == true) {
-                                                    // $("#datalink" ).load(window.location.href + " #datalink" );
-                                                    window.location.href = "#datalink";
-                                                    window.location.reload();
-                                                    // $(".removelink").each(function() {
-                                                    //     $(this).parents(".removehtml").remove();
-                                                    // });
-                                                    // alert(data['message']);
-                                                } else {
-                                                    alert('Error occured.');
-                                                }
-                                            },
-                                            error: function (req, status, error) {
-                                                var err = req.responseJSON;
-                                                // console.log(err);
-                                                swal({
-                                                    title: 'ERROR',
-                                                    text: err.message,
-                                                    icon: 'error',
-                                                    showConfirmButton: false,
-                                                    timer: 5000,
-                                                });
+                            }).then((tambahlink) => {
+                                if (tambahlink) {
+                                    $.ajax({
+                                        url: "{{ url('/store') }}",
+                                        type: 'POST',
+                                        data: formData,
+                                        dataType: 'json',
+                                        success: function(data) {
+                                            swal({
+                                                title: 'Proses Tambah Berhasil',
+                                                text: data.message,
+                                                icon: 'success',
+                                                showConfirmButton: false,
+                                            });
+                                            if (data['status'] == true) {
+                                                // $("#datalink" ).load(window.location.href + " #datalink" );
+                                                window.location.href = "#datalink";
+                                                window.location.reload();
+                                                // $(".removelink").each(function() {
+                                                //     $(this).parents(".removehtml").remove();
+                                                // });
+                                                // alert(data['message']);
+                                            } else {
+                                                alert('Error occured.');
                                             }
-                                        });
-                                    } else {
-                                        swal.close();
-                                    }
-                                });
+                                        },
+                                        error: function(req, status, error) {
+                                            var err = req.responseJSON;
+                                            // console.log(err);
+                                            swal({
+                                                title: 'ERROR',
+                                                text: err.message,
+                                                icon: 'error',
+                                                showConfirmButton: false,
+                                                timer: 5000,
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    swal.close();
+                                }
+                            });
                         });
-                    }); 
+                    });
                 </script>
 
             </div>
         </section><!-- End Services Section -->
-        
+
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact section-bg">
             <div class="container" data-aos="fade-up">
@@ -464,7 +469,7 @@
                         <div class="info-box mb-4">
                             <i class="bx bx-map"></i>
                             <h3>Alamat Kami</h3>
-                            <p><a href="{{ url('part/'.$slug.'/'.$alamat->kode) }}"> ({{ strtoupper($alamat->kode) }})</a>
+                            <p><a href="{{ url('part/' . $slug . '/' . $alamat->kode) }}"> ({{ strtoupper($alamat->kode) }})</a>
                                 {!! $alamat->teks !!}</p>
                         </div>
                     </div>
@@ -473,7 +478,7 @@
                         <div class="info-box  mb-4">
                             <i class="bx bx-envelope"></i>
                             <h3>Email</h3>
-                            <p><a href="{{ url('part/'.$slug.'/'.$email->kode) }}"> ({{ strtoupper($email->kode) }})</a>
+                            <p><a href="{{ url('part/' . $slug . '/' . $email->kode) }}"> ({{ strtoupper($email->kode) }})</a>
                                 {!! $email->teks !!}</p>
                         </div>
                     </div>
@@ -482,19 +487,30 @@
                         <div class="info-box  mb-4">
                             <i class="bx bx-phone-call"></i>
                             <h3>No HP</h3>
-                            <p><a href="{{ url('part/'.$slug.'/'.$nohp->kode) }}"> ({{ strtoupper($nohp->kode) }})</a>
+                            <p><a href="{{ url('part/' . $slug . '/' . $nohp->kode) }}"> ({{ strtoupper($nohp->kode) }})</a>
                                 {!! $nohp->teks !!}</p>
                         </div>
                     </div>
 
                 </div>
+                <style>
+                    .google-maps {
+                        position: relative;
+                        padding-bottom: 75%; // This is the aspect ratio
+                        height: 0;
+                        overflow: hidden;
+                    }
 
-                <div class="row justify-content-center">
-
-                    <div class="col-md-5" id="map">
-                        {!! $gmap->teks !!}
-                    </div>
-
+                    .google-maps iframe {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100% !important;
+                        height: 100% !important;
+                    }
+                </style>
+                <div class="google-maps">
+                    {!! $gmap->teks !!}
                 </div>
 
             </div>
@@ -511,13 +527,13 @@
                 <div class="row">
 
                     <div class="col-lg-4 col-md-6 footer-contact">
-                        <a href="{{ url('part/'.$slug.'/'.$footer1->kode) }}" class="text-white"> ({{ strtoupper($footer1->kode) }})</a>
+                        <a href="{{ url('part/' . $slug . '/' . $footer1->kode) }}" class="text-white"> ({{ strtoupper($footer1->kode) }})</a>
                         <h3>{{ $footer1->teks }}</h3>
-                        <a href="{{ url('part/'.$slug.'/'.$footer2->kode) }}" class="text-white"> ({{ strtoupper($footer2->kode) }})</a>
+                        <a href="{{ url('part/' . $slug . '/' . $footer2->kode) }}" class="text-white"> ({{ strtoupper($footer2->kode) }})</a>
                         <p>
                             {!! $footer2->teks !!}<br>
-                            <strong><a href="{{ url('part/'.$slug.'/'.$nohp->kode) }}" class="text-white"> ({{ strtoupper($nohp->kode) }})</a> Phone:</strong> {{ $nohp->teks }}<br>
-                            <strong><a href="{{ url('part/'.$slug.'/'.$email->kode) }}" class="text-white"> ({{ strtoupper($email->kode) }})</a> Email:</strong> {{ $email->teks }}<br>
+                            <strong><a href="{{ url('part/' . $slug . '/' . $nohp->kode) }}" class="text-white"> ({{ strtoupper($nohp->kode) }})</a> Phone:</strong> {{ $nohp->teks }}<br>
+                            <strong><a href="{{ url('part/' . $slug . '/' . $email->kode) }}" class="text-white"> ({{ strtoupper($email->kode) }})</a> Email:</strong> {{ $email->teks }}<br>
                         </p>
                     </div>
 
@@ -525,17 +541,17 @@
                         <h4>Useful Links</h4>
                         <ul>
                             @foreach ($footerlink as $item)
-                            <li><a href="{{ url('part/'.$slug.'/'.$item->kode) }}" class="text-white"> ({{ strtoupper($item->kode) }})</a>
-                                <i class="bx bx-chevron-right"></i> <a href="{{ $item->link }}">{{ $item->teks }}</a>
-                            </li>
+                                <li><a href="{{ url('part/' . $slug . '/' . $item->kode) }}" class="text-white"> ({{ strtoupper($item->kode) }})</a>
+                                    <i class="bx bx-chevron-right"></i> <a href="{{ $item->link }}">{{ $item->teks }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
-                        <h4><a href="{{ url('part/'.$slug.'/'.$footer3->kode) }}" class="text-white"> ({{ strtoupper($footer3->kode) }})</a>
+                        <h4><a href="{{ url('part/' . $slug . '/' . $footer3->kode) }}" class="text-white"> ({{ strtoupper($footer3->kode) }})</a>
                             {{ $footer3->teks }}</h4>
-                        <p><a href="{{ url('part/'.$slug.'/'.$footer4->kode) }}" class="text-white"> ({{ strtoupper($footer4->kode) }})</a>
+                        <p><a href="{{ url('part/' . $slug . '/' . $footer4->kode) }}" class="text-white"> ({{ strtoupper($footer4->kode) }})</a>
                             {{ $footer4->teks }}
                     </div>
 
@@ -548,7 +564,7 @@
             <div class="copyright-wrap d-md-flex py-4">
                 <div class="me-md-auto text-center text-md-start">
                     <div class="copyright">
-                        &copy; Copyright <strong><span>UPT TIPD IAKN Palangka Raya</span></strong>. All Rights Reserved
+                        &copy; Copyright <strong><span>UPT TIPD IAKN Palangka Raya</span></strong>. <br> All Rights Reserved
                     </div>
                     <div class="credits d-none">
                         <!-- All the links in the footer should remain intact. -->
@@ -578,13 +594,14 @@
             border-radius: 4px;
             transition: all 0.4s;
         }
+
         .button-whatsapp img {
             width: 40px;
             height: 40px;
         }
     </style>
-    <a class="button-whatsapp {{ $whatsapp->link ? "" : "d-none" }}" href="{{ $whatsapp->link }}"><img src="{{ asset('assets/img_default/whatsapp-icon-logo-png.png') }}" alt=""></a>
-    
+    <a class="button-whatsapp {{ $whatsapp->link ? '' : 'd-none' }}" href="{{ $whatsapp->link }}"><img src="{{ asset('assets/img_default/whatsapp-icon-logo-png.png') }}" alt=""></a>
+
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     {{-- <div id="preloader"></div> --}}
 

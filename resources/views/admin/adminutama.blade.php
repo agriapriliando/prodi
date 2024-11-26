@@ -15,7 +15,9 @@
     <link href="{{ asset('assets') }}/img_default/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets') }}/vendor/aos/aos.css" rel="stylesheet">
@@ -66,22 +68,22 @@
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
             <div style="max-width: 300px">
-                <h1 class="logo" style="font-size: 14px"><a href="http://127.0.0.1:8000">Admin Utama</a></h1>
+                <h1 class="logo" style="font-size: 14px"><a href="{{ url('admin/utama') }}">Admin Utama</a></h1>
             </div>
             <!-- Uncomment below if you prefer to use an image logo -->
             {{-- <a href="index.html" class="logo"><img src="{{ asset('assets/img_default/logo.png') }}" alt="" class="img-fluid"></a> --}}
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="http://127.0.0.1:8000/admin/manajemen-pendidikan-kristen">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="{{ url('') }}admin/manajemen-pendidikan-kristen">Home</a></li>
                     <li class="dropdown"><a href="#"><span>Pilih Prodi/UPPS</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             @foreach ($daftarweb as $prodi)
-                            <li><a href="{{ url('admin/'.$prodi->slug) }}">{{ $prodi->jenjang.'-'.strtoupper($prodi->nama_prodi) }}</a></li>
+                                <li><a href="{{ url('admin/' . $prodi->slug) }}">{{ $prodi->jenjang . '-' . strtoupper($prodi->nama_prodi) }}</a></li>
                             @endforeach
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="http://127.0.0.1:8000/logout"><i style="font-size: 19px" class="bi bi-box-arrow-in-right me-2"></i> Logout</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url('logout') }}"><i style="font-size: 19px" class="bi bi-box-arrow-in-right me-2"></i> Logout</a></li>
                 </ul>
                 <i class="ms-4 bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -118,16 +120,16 @@
             <span class="btn btn-warning p-2">Selamat Datang Administrator - Anda Login Sebagai {{ session('namauser') }}
                 <a href="{{ url('logout') }}" style="text-decoration: underline"><i class="bi bi-box-arrow-in-right"></i> Klik untuk Logout</a>
                 @if (session('iduser') == 1)
-                <a href="{{ url('admin/utama') }}"><i class="bi bi-file-earmark-lock ms-2"></i></a>
+                    <a href="{{ url('admin/utama') }}"><i class="bi bi-file-earmark-lock ms-2"></i></a>
                 @endif
             </span>
         </div>
-        <div class="row">
+        <div class="row mt-2">
             @if (session('status'))
-            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-                <h4><strong></strong> {{ session('status') }}</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                    <h4><strong></strong> {{ session('status') }}</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             @endif
         </div>
         <div class="row my-2">
@@ -149,17 +151,19 @@
                                         @method('POST')
                                         <div class="mb-3 ">
                                             <label class="form-label">Nama Pengguna :</label>
-                                            <input name="nama" style="background-color: rgb(242, 242, 242);" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
+                                            <input autocomplete="false" name="nama" style="background-color: rgb(242, 242, 242);" class="form-control @error('nama') is-invalid @enderror"
+                                                value="{{ old('nama') }}">
                                             @error('nama')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="mb-3 ">
                                             <label class="form-label">Username :</label>
-                                            <input name="username" style="background-color: rgb(242, 242, 242);" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}">
+                                            <input autocomplete="false" name="username" style="background-color: rgb(242, 242, 242);" class="form-control @error('username') is-invalid @enderror"
+                                                value="{{ old('username') }}">
                                             <small>Tanpa memakai spasi | Digunakan untuk login</small>
                                             @error('username')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="mb-3 ">
@@ -168,30 +172,33 @@
                                                 <option value="admin">Admin</option>
                                             </select>
                                             @error('jenis')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="mb-3 ">
                                             <label class="form-label">Pilih Website yang dikelola :</label>
-                                            <select class="form-select @error('website_dikelola') is-invalid @enderror" name="website_dikelola[]" multiple="multiple" id="basic-usage" aria-label="Default select example">
+                                            <select class="form-select @error('website_dikelola') is-invalid @enderror" name="website_dikelola[]" multiple="multiple" id="basic-usage"
+                                                aria-label="Default select example">
                                                 @foreach ($allprodi as $item)
-                                                <option value="{{ $item->id }}" {{ collect(old('website_dikelola'))->contains($item->id) ? "selected" : "" }}>{{ $item->jenjang.'-'.$item->nama_prodi }}</option>
+                                                    <option value="{{ $item->id }}" {{ collect(old('website_dikelola'))->contains($item->id) ? 'selected' : '' }}>
+                                                        {{ $item->jenjang . '-' . $item->nama_prodi }}</option>
                                                 @endforeach
                                             </select>
                                             @error('website_dikelola')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Password : </label>
                                             <div class="input-group">
-                                                <input id="myPassword" style="background-color: rgb(242, 242, 242);" class="form-control @error('password') is-invalid @enderror" type="password" name="password">
+                                                <input id="myPassword" style="background-color: rgb(242, 242, 242);" class="form-control @error('password') is-invalid @enderror" type="password"
+                                                    name="password">
                                                 <span class="input-group-text">
                                                     <i id="iconPass" class="bi bi-eye-slash" onclick="unhidePass()"></i>
                                                 </span>
                                             </div>
                                             @error('password')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="d-grid gap-2">
@@ -203,18 +210,18 @@
                                     </div>
                                     <script>
                                         function unhidePass() {
-                                        var x = document.getElementById("myPassword");
-                                        var icon = document.getElementById("iconPass");
-                                        if (x.type === "password") {
-                                            x.type = "text";
-                                            icon.classList.remove("bi-eye-slash");
-                                            icon.classList.add("bi-eye");
-                                        } else {
-                                            icon.classList.remove("bi-eye");
-                                            icon.classList.add("bi-eye-slash");
-                                            x.type = "password";
+                                            var x = document.getElementById("myPassword");
+                                            var icon = document.getElementById("iconPass");
+                                            if (x.type === "password") {
+                                                x.type = "text";
+                                                icon.classList.remove("bi-eye-slash");
+                                                icon.classList.add("bi-eye");
+                                            } else {
+                                                icon.classList.remove("bi-eye");
+                                                icon.classList.add("bi-eye-slash");
+                                                x.type = "password";
+                                            }
                                         }
-                                    }
                                     </script>
                                 </div>
                             </div>
@@ -231,9 +238,9 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Daftar Akun</h5>
-    
-    
-    
+
+
+
                                         <table id="myTableUser" class="table table-striped nowrap responsive" style="width:100%">
                                             <thead>
                                                 <tr>
@@ -246,24 +253,25 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($users as $item)
-                                                <tr id="{{ $item->id }}">
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->nama." | ".$item->username }}</td>
-                                                    <td>{{ $item->jenis }}</td>
-                                                    <td>
-                                                        @foreach ($item->prodis as $d)
-                                                        {{ $d->jenjang.' | '.$d->nama_prodi }}<br>
-                                                        @endforeach
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <a href="{{ url('admin/users/'.$item->id) }}" class="btn btn-warning btn-sm me-1"><i class="bi bi-pencil"></i></a>
-                                                            @if ($item->id <> 1)
-                                                                <button data-url="{{ url('admin/users/'.$item->id.'/destroy') }}" class="btn btn-danger btn-sm removeakun" data-nama="{{ $item->nama }}" data-id="{{ $item->id }}" type="button"><i class="bi bi-trash"></i></button>
+                                                    <tr id="{{ $item->id }}">
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $item->nama . ' | ' . $item->username }}</td>
+                                                        <td>{{ $item->jenis }}</td>
+                                                        <td>
+                                                            @foreach ($item->prodis as $d)
+                                                                {{ $d->jenjang . ' | ' . $d->nama_prodi }}<br>
+                                                            @endforeach
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <a href="{{ url('admin/users/' . $item->id) }}" class="btn btn-warning btn-sm me-1"><i class="bi bi-pencil"></i></a>
+                                                                @if ($item->id != 1)
+                                                                    <button data-url="{{ url('admin/users/' . $item->id . '/destroy') }}" class="btn btn-danger btn-sm removeakun"
+                                                                        data-nama="{{ $item->nama }}" data-id="{{ $item->id }}" type="button"><i class="bi bi-trash"></i></button>
                                                                 @endif
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                             <tfoot>
@@ -287,52 +295,52 @@
                                                     dataurl = $(this).attr("data-url");
                                                     console.log(dataurl);
                                                     var myhtml = document.createElement("div");
-                                                    myhtml.innerHTML = "Yakin ingin menghapus akun <b>"+datanama+"</b> ?";
+                                                    myhtml.innerHTML = "Yakin ingin menghapus akun <b>" + datanama + "</b> ?";
                                                     swal.fire({
                                                         title: 'Hapus Data...',
                                                         icon: 'warning',
-                                                        html: "Yakin ingin menghapus akun <b>"+datanama+"</b> ?",
+                                                        html: "Yakin ingin menghapus akun <b>" + datanama + "</b> ?",
                                                         showCancelButton: true,
                                                         confirmButtonColor: '#3085d6',
                                                         cancelButtonColor: '#d33',
                                                         confirmButtonText: 'Ya, Hapus..'
-                                                        }).then((deleteAll) => {
-                                                            if (deleteAll.isConfirmed) {
-                                                                $.ajax({
-                                                                    url: ""+dataurl+"",
-                                                                    type: 'DELETE',
-                                                                    headers: {
-                                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                                    },
-                                                                    success: function(data) {
-                                                                        console.log(data['message']);
-                                                                        swal.fire({
-                                                                            title: 'Proses Hapus Akun Berhasil',
-                                                                            text: ''+data['message']+'',
-                                                                            icon: 'success',
-                                                                            showConfirmButton: false,
-                                                                            timer: 1500,
-                                                                            timerProgressBar: true,
-                                                                        });
-                                                                        if (data['status'] == true) {
-                                                                            $("#"+dataid).remove();
-                                                                        } else {
-                                                                            alert('Error occured.');
-                                                                        }
-                                                                    },
-                                                                    error: function(data) {
-                                                                        alert(data.responseText);
+                                                    }).then((deleteAll) => {
+                                                        if (deleteAll.isConfirmed) {
+                                                            $.ajax({
+                                                                url: "" + dataurl + "",
+                                                                type: 'DELETE',
+                                                                headers: {
+                                                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                                },
+                                                                success: function(data) {
+                                                                    console.log(data['message']);
+                                                                    swal.fire({
+                                                                        title: 'Proses Hapus Akun Berhasil',
+                                                                        text: '' + data['message'] + '',
+                                                                        icon: 'success',
+                                                                        showConfirmButton: false,
+                                                                        timer: 1500,
+                                                                        timerProgressBar: true,
+                                                                    });
+                                                                    if (data['status'] == true) {
+                                                                        $("#" + dataid).remove();
+                                                                    } else {
+                                                                        alert('Error occured.');
                                                                     }
-                                                                });
-                                                            } else {
-                                                                swal.close();
-                                                            }
-                                                        });
+                                                                },
+                                                                error: function(data) {
+                                                                    alert(data.responseText);
+                                                                }
+                                                            });
+                                                        } else {
+                                                            swal.close();
+                                                        }
+                                                    });
                                                 });
-                        
-                                            }); 
+
+                                            });
                                         </script>
-    
+
                                         {{-- <script src="{{ asset('') }}assets/datatable/jquery-3.7.0.js"></script> --}}
                                         <script src="{{ asset('') }}assets/datatable/jquery.dataTables.min.js"></script>
                                         <script src="{{ asset('') }}assets/datatable/dataTables.bootstrap5.min.js"></script>
@@ -345,49 +353,49 @@
                                         <script src="{{ asset('') }}assets/datatable/buttons.html5.min.js"></script>
                                         <script src="{{ asset('') }}assets/datatable/buttons.print.min.js"></script>
                                         <script src="{{ asset('') }}assets/datatable/buttons.colVis.min.js"></script>
-    
+
                                         <script src="{{ asset('') }}assets/select2/select2.min.js"></script>
-    
+
                                         <script>
                                             new DataTable('#myTableUser', {
                                                 responsive: true,
                                                 dom: 'Bfrtip',
                                                 buttons: [
-                                                    'pageLength','colvis',
+                                                    'pageLength', 'colvis',
                                                     {
                                                         extend: 'copy',
                                                         exportOptions: {
-                                                            columns: [ 0, 1, 2, 3 ]
+                                                            columns: [0, 1, 2, 3]
                                                         }
                                                     },
                                                     {
                                                         extend: 'excel',
                                                         exportOptions: {
-                                                            columns: [ 0, 1, 2, 3 ]
+                                                            columns: [0, 1, 2, 3]
                                                         }
                                                     },
                                                     {
                                                         extend: 'pdf',
                                                         exportOptions: {
-                                                            columns: [ 0, 1, 2, 3 ]
+                                                            columns: [0, 1, 2, 3]
                                                         }
                                                     },
                                                     {
                                                         extend: 'print',
                                                         exportOptions: {
-                                                            columns: [ 0, 1, 2, 3 ]
+                                                            columns: [0, 1, 2, 3]
                                                         }
                                                     }
                                                 ]
                                             });
-                                            $(document).ready(function(){
-                                                $( '#basic-usage' ).select2( {
+                                            $(document).ready(function() {
+                                                $('#basic-usage').select2({
                                                     theme: "bootstrap-5",
-                                                    placeholder: $( this ).data( 'placeholder' ),
-                                                } );
+                                                    placeholder: $(this).data('placeholder'),
+                                                });
                                             });
                                         </script>
-    
+
                                     </div>
                                 </div>
                             </div>
@@ -395,7 +403,8 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                aria-controls="collapseThree">
                                 Tambah Website
                             </button>
                         </h2>
@@ -409,9 +418,10 @@
                                         @method('POST')
                                         <div class="mb-3 ">
                                             <label class="form-label">Nama Website / Program Studi :</label>
-                                            <input name="nama_prodi" style="background-color: rgb(242, 242, 242);" class="form-control @error('nama_prodi') is-invalid @enderror" value="{{ old('nama_prodi') }}">
+                                            <input name="nama_prodi" style="background-color: rgb(242, 242, 242);" class="form-control @error('nama_prodi') is-invalid @enderror"
+                                                value="{{ old('nama_prodi') }}">
                                             @error('nama_prodi')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="mb-3 ">
@@ -422,7 +432,7 @@
                                                 <option value="S3">S3</option>
                                             </select>
                                             @error('jenjang')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="mb-3 ">
@@ -436,7 +446,7 @@
                                                 <option value="IAKN PKY">IAKN Palangka Raya</option>
                                             </select>
                                             @error('upps')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="d-grid gap-2">
@@ -461,7 +471,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Daftar Website</h5>
-    
+
                                         <table id="myTableProdi" class="table table-striped nowrap" style="width:100%">
                                             <thead>
                                                 <tr>
@@ -473,21 +483,22 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($allprodi as $c)
-                                                <tr id="prodi{{ $c->id }}">
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $c->jenjang.'-'.$c->nama_prodi }}<br>
-                                                        <span class="badge badge-pill bg-warning">{{ $c->users_count-1 }} akun pengelola</span>
-                                                    </td>
-                                                    <td>{{ $c->upps }}</td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <a href="{{ url('admin/prodi/'.$c->id) }}" class="btn btn-warning btn-sm me-1"><i class="bi bi-pencil"></i></a>
-                                                            @if ($c->users_count == 1)
-                                                            <button data-url="{{ url('admin/prodi/'.$c->id.'/destroy') }}" class="btn btn-danger btn-sm removeprodi" data-nama="{{ $c->nama_prodi }}" data-id="{{ $c->id }}" type="button"><i class="bi bi-trash"></i></button>
-                                                            @endif
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                    <tr id="prodi{{ $c->id }}">
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $c->jenjang . '-' . $c->nama_prodi }}<br>
+                                                            <span class="badge badge-pill bg-warning">{{ $c->users_count - 1 }} akun pengelola</span>
+                                                        </td>
+                                                        <td>{{ $c->upps }}</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <a href="{{ url('admin/prodi/' . $c->id) }}" class="btn btn-warning btn-sm me-1"><i class="bi bi-pencil"></i></a>
+                                                                @if ($c->users_count == 1)
+                                                                    <button data-url="{{ url('admin/prodi/' . $c->id . '/destroy') }}" class="btn btn-danger btn-sm removeprodi"
+                                                                        data-nama="{{ $c->nama_prodi }}" data-id="{{ $c->id }}" type="button"><i class="bi bi-trash"></i></button>
+                                                                @endif
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                             <tfoot>
@@ -508,67 +519,67 @@
                                                     dataurl = $(this).attr("data-url");
                                                     console.log(dataurl);
                                                     var formData = {
-                                                        '_token' : "{{ csrf_token() }}",
+                                                        '_token': "{{ csrf_token() }}",
                                                     };
                                                     swal.fire({
                                                         title: 'Hapus Data...',
                                                         icon: 'warning',
-                                                        html: "Yakin ingin menghapus Website/Prodi <b>"+datanama+"</b> ?",
+                                                        html: "Yakin ingin menghapus Website/Prodi <b>" + datanama + "</b> ?",
                                                         showCancelButton: true,
                                                         confirmButtonColor: '#3085d6',
                                                         cancelButtonColor: '#d33',
                                                         confirmButtonText: 'Ya, Hapus..'
-                                                        }).then((removeprodi) => {
-                                                            if (removeprodi.isConfirmed) {
-                                                                $.ajax({
-                                                                    url: ""+dataurl+"",
-                                                                    type: 'DELETE',
-                                                                    data: formData,
-                                                                    success: function(data) {
-                                                                        console.log(data['message']);
-                                                                        swal.fire({
-                                                                            title: 'Proses Website/Prodi Berhasil',
-                                                                            text: ''+data['message']+'',
-                                                                            icon: 'success',
-                                                                            showConfirmButton: false,
-                                                                            timer: 1500,
-                                                                            timerProgressBar: true,
-                                                                        });
-                                                                        if (data['status'] == true) {
-                                                                            $("#prodi"+dataid).remove();
-                                                                        } else {
-                                                                            alert('Error occured.');
-                                                                        }
-                                                                    },
-                                                                    error: function(data) {
-                                                                        alert(data.responseText);
+                                                    }).then((removeprodi) => {
+                                                        if (removeprodi.isConfirmed) {
+                                                            $.ajax({
+                                                                url: "" + dataurl + "",
+                                                                type: 'DELETE',
+                                                                data: formData,
+                                                                success: function(data) {
+                                                                    console.log(data['message']);
+                                                                    swal.fire({
+                                                                        title: 'Proses Website/Prodi Berhasil',
+                                                                        text: '' + data['message'] + '',
+                                                                        icon: 'success',
+                                                                        showConfirmButton: false,
+                                                                        timer: 1500,
+                                                                        timerProgressBar: true,
+                                                                    });
+                                                                    if (data['status'] == true) {
+                                                                        $("#prodi" + dataid).remove();
+                                                                    } else {
+                                                                        alert('Error occured.');
                                                                     }
-                                                                });
-                                                            } else {
-                                                                swal.close();
-                                                            }
-                                                        });
+                                                                },
+                                                                error: function(data) {
+                                                                    alert(data.responseText);
+                                                                }
+                                                            });
+                                                        } else {
+                                                            swal.close();
+                                                        }
+                                                    });
                                                 });
-                        
-                                            }); 
+
+                                            });
                                         </script>
-    
+
                                         <script>
                                             new DataTable('#myTableProdi', {
                                                 responsive: true,
                                                 dom: 'Bfrtip',
                                                 buttons: [
-                                                    'pageLength','copy', 'excel', 'pdf', 'print'
+                                                    'pageLength', 'copy', 'excel', 'pdf', 'print'
                                                 ]
                                             });
-                                            $(document).ready(function(){
-                                                $( '#basic-usage' ).select2( {
+                                            $(document).ready(function() {
+                                                $('#basic-usage').select2({
                                                     theme: "bootstrap-5",
-                                                    placeholder: $( this ).data( 'placeholder' ),
-                                                } );
+                                                    placeholder: $(this).data('placeholder'),
+                                                });
                                             });
                                         </script>
-    
+
                                     </div>
                                 </div>
                             </div>

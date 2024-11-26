@@ -26,6 +26,7 @@ class FrontController extends Controller
         }
         $artikels = Http::get("https://iaknpky.ac.id/api/artikel");
         return view('home', [
+            'prodi_slug' => $slug,
             'artikels' => json_decode($artikels),
             'slug_prodi' => $slug,
             'header' => Part::where('prodi_id', $prodi->id)->where('kode', 'header')->first(),

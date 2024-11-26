@@ -61,7 +61,7 @@
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
             <div style="max-width: 300px">
-                <h1 class="logo" style="font-size: 14px"><a href="{{ url('') }}">{{ $header->teks }}</a></h1>
+                <h1 class="logo" style="font-size: 14px"><a href="{{ url('admin/' . $slug) }}">{{ $header->teks }}</a></h1>
             </div>
             <!-- Uncomment below if you prefer to use an image logo -->
             {{-- <a href="index.html" class="logo"><img src="{{ asset('assets/img_default/logo.png') }}" alt="" class="img-fluid"></a> --}}

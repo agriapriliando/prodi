@@ -23,10 +23,16 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $cre = $request->validate([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
+        $cre = $request->validate(
+            [
+                'username' => 'required',
+                'password' => 'required'
+            ],
+            [
+                'username.required' => 'Username Harus Diisi',
+                'password.required' => 'Password Harus Diisi',
+            ]
+        );
 
         if (Auth::attempt($cre, $request->remember_me)) {
             $request->session()->regenerate();
@@ -43,11 +49,11 @@ class LoginController extends Controller
                 'last_login' => Carbon::now()->toDateTimeString(),
             ]);
             if (session('iduser') == 1) {
-                return redirect('admin/utama')->with('status', 'Selamat Datang Admin Utama' . Auth::user()->nama);
+                return redirect('admin/utama')->with('status', 'Selamat Datang Admin Utama ' . Auth::user()->nama);
             }
             return redirect('admin/' . $prodi->slug)->with('status', 'Selamat Datang ' . Auth::user()->nama);
         }
-        return redirect('/')->with('status', 'Login Gagal');
+        return redirect('login')->with('status', 'Username atau Password Salah');
     }
 
     public function logout(Request $request)

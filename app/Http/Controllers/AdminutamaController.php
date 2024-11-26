@@ -44,8 +44,7 @@ class AdminutamaController extends Controller
             ]);
 
             $newuser->prodis()->attach($request->website_dikelola);
-
-            return $newuser;
+            // return $newuser;
         });
 
         // return $newuser;
